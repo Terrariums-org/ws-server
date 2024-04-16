@@ -9,3 +9,6 @@ app.use(express.json());
 app.set("port", process.env.PORT || 8080);
 
 export const server = createServer(app);
+server.listen(app.get("port"), () => {
+    console.log("Servidor corriendo en puerto", app.get("port"));
+  });
