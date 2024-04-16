@@ -2,6 +2,11 @@ import { SocketEvent } from "../entities/socket-events";
 
 export interface SocketRepository {
   createServer(): Promise<any>;
-  connect(): Promise<any>;
-  consumeData(event: SocketEvent, eventEmit: SocketEvent): Promise<any>;
+  connect(event: SocketEvent, eventEmit: SocketEvent): Promise<void>;
+  consumeData(
+    io: unknown,
+    socket: unknown,
+    event: SocketEvent,
+    eventEmit: SocketEvent
+  ): Promise<void>;
 }
