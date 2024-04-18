@@ -1,6 +1,6 @@
 import express from "express";
-import { SocketEvent } from "./domain/entities/socket-events";
-import { setUp } from "./infraestructure/utils/setUp";
+import { SocketEvent } from "./socket/domain/entities/socket-events";
+import { setUp } from "./socket/infraestructure/utils/setUp";
 
 function start() {
   const app = express();
