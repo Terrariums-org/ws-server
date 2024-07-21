@@ -1,7 +1,6 @@
 import cors from "cors";
-import * as fs from "fs";
 import express, { Application } from "express";
-import { createServer } from "https";
+import { createServer } from "node:http";
 import { Server } from "socket.io";
 import { SocketIO } from "../Socket.io/socketIO";
 import { ConsumeSocket } from "../../application/consume-socket.service";
@@ -12,11 +11,7 @@ export function setUp(app: Application) {
   app.use(cors());
   app.use(express.json());
   app.set("port", process.env.PORT || 8080);
-  const httpsOptions = {
-    key: fs.readFileSync('./secrets/cert.key'),
-    cert: fs.readFileSync('./secrets/cert.crt'),
-  };
-  const server = createServer(httpsOptions, app);
+  const server = createServer( app);
   //server socket
   const socketConfig = new Server(server, {
     cors: {
